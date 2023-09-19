@@ -13,9 +13,10 @@ export default function EditTopicForm({ title, description, picture, id }) {
   const [newPicture, setNewPicture] = useState(picture);
 
   const handleSubmit = async (e) => {
+    const apiUrl = process.env.API_URL || "http://localhost:3000";
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
+      const res = await fetch(`${apiUrl}/api/topics/${id}`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json",

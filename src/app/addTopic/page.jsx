@@ -16,6 +16,7 @@ export default function Page() {
   }, []);
 
   const handleSubmit = async (e) => {
+    const apiUrl = process.env.API_URL || "http://localhost:3000";
     e.preventDefault();
 
     if (!title || !description.trim() || !picture) {
@@ -24,7 +25,7 @@ export default function Page() {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/topics", {
+      const res = await fetch(`${apiUrl}/api/topics`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",

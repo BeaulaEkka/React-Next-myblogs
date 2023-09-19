@@ -5,11 +5,13 @@ import { useRouter } from "next/navigation";
 
 export default function RemoveBtn({ id }) {
   const router = useRouter();
+
   const removeTopic = async () => {
     const confirmed = confirm("Are you sure?");
+    const apiUrl = process.env.API_URL || "http://localhost:3000";
 
     if (confirmed) {
-      const res = await fetch(`http://localhost:3000/api/topics?id=${id}`, {
+      const res = await fetch(`${apiUrl}/api/topics?id=${id}`, {
         method: "DELETE",
       });
 
