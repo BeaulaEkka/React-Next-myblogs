@@ -1,10 +1,9 @@
 import Link from "next/link";
 import RemoveBtn from "./RemoveBtn";
-import { HiPencilAlt } from "react-icons/hi";
 import Image from "next/image";
 
 const getTopics = async () => {
-  const apiUrl = process.env.API_URL || "http://localhost:3000";
+  const apiUrl = process.env.API_URL;
   try {
     const res = await fetch(`${apiUrl}/api/topics`, {
       cache: "no-store",
@@ -62,7 +61,6 @@ export default async function TopicsList() {
               <div className="w-full flex flex-row gap-5 justify-center mt-5 mb-5">
                 <RemoveBtn id={t._id} />
                 <Link href={`/editTopic/${t._id}`}>
-                  {/* <HiPencilAlt size={24} /> */}
                   <button className="px-8 py-2 bg-green-500 hover:bg-green-700 rounded text-white font-bold">
                     Edit
                   </button>

@@ -8,15 +8,14 @@ export default function Page() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [picture, setPicture] = useState("");
-  const [isClient, setIsClient] = useState(false); // State to check if the code is running on the client-side
-
+  const [isClient, setIsClient] = useState(false);
   const router = useRouter();
   useEffect(() => {
-    setIsClient(true); // Set isClient to true when the component mounts (client-side)
+    setIsClient(true);
   }, []);
 
   const handleSubmit = async (e) => {
-    const apiUrl = process.env.API_URL || "http://localhost:3000";
+    const apiUrl = process.env.API_URL;
     e.preventDefault();
 
     if (!title || !description.trim() || !picture) {

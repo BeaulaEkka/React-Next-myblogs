@@ -1,10 +1,8 @@
 "use client";
-
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
-import { Freehand } from "next/font/google";
 
 export default function EditTopicForm({ title, description, picture, id }) {
   const router = useRouter();
@@ -12,9 +10,15 @@ export default function EditTopicForm({ title, description, picture, id }) {
   const [newDescription, setNewDescription] = useState(description);
   const [newPicture, setNewPicture] = useState(picture);
 
+  const handleQuillSubmit = (html) => {
+    setNewDescription(html);
+  };
+
   const handleSubmit = async (e) => {
-    const apiUrl = process.env.API_URL || "http://localhost:3000";
     e.preventDefault();
+
+    const apiUrl = process.env.API_URL;
+
     try {
       const res = await fetch(`${apiUrl}/api/topics/${id}`, {
         method: "PUT",
@@ -52,7 +56,7 @@ export default function EditTopicForm({ title, description, picture, id }) {
           <ReactQuill
             theme="snow"
             value={newDescription}
-            onChange={setNewDescription}
+            onChange={handleQuillSubmit}
             placeholder="Topic Description"
             className="h-80"
             modules={{
