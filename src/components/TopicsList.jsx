@@ -52,10 +52,7 @@ export default async function TopicsList() {
                 <h1 className="text-8xl text-white mb-5 font-freehand absolute right-14 top-24">
                   {t.title}
                 </h1>
-                <div
-                  dangerouslySetInnerHTML={{ __html: t.description }}
-                  className="w-full md:w-[90%] mx-auto"
-                />
+                <div className="w-full md:w-[90%] mx-auto">{t.description}</div>
               </div>
 
               <div className="w-full flex flex-row gap-5 justify-center mt-5 mb-5">

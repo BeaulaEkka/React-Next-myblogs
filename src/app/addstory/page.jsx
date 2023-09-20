@@ -1,26 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-// import { Editor } from "react-draft-wysiwyg";
-// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-// import draftToHtml from "draftjs-to-html";
-// import htmlToDraft from "html-to-draftjs";
 
 export default function Page() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [picture, setPicture] = useState("");
-  // const [isClient, setIsClient] = useState(false);
 
   const router = useRouter();
-
-  // useEffect(() => {
-  //   setIsClient(true);
-  // }, []);
-
-  // const handleEditorshtml = (html) => {
-  //   setDescription(html);
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +15,7 @@ export default function Page() {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
     if (!title || !description || !picture) {
-      alert("Title and description are required.");
+      alert("Title, Picture and description are required.");
       return;
     }
 
@@ -48,6 +35,7 @@ export default function Page() {
       if (res.ok) {
         router.push("/");
       } else {
+        console.log("RES:", res);
         throw new Error("Failed to create a topic");
       }
       router.refresh();
@@ -72,17 +60,7 @@ export default function Page() {
             placeholder="Topic Title"
           />
         </div>
-        {/* <div>
-          {isClient && (
-            <Editor
-              value={description}
-              onChange={handleEditorshtml}
-              toolbarClassName="toolbarClassName"
-              wrapperClassName="wrapperClassName"
-              editorClassName="editorClassName"
-            />
-          )}
-        </div> */}
+
         <div className="w-full">
           <textarea
             name="description"
