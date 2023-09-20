@@ -35,7 +35,6 @@ export default function Page() {
       if (res.ok) {
         router.push("/");
       } else {
-        console.log("RES:", res);
         throw new Error("Failed to create a topic");
       }
       router.refresh();
