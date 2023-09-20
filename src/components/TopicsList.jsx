@@ -21,7 +21,7 @@ const getTopics = async () => {
 };
 
 export default async function TopicsList(getTopics) {
-  const { topics } = await getTopics();
+  const topics = await getTopics();
   console.log("TOPICS:", topics);
 
   return (
