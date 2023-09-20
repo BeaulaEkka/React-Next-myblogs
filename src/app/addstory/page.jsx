@@ -12,7 +12,7 @@ export default function Page() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
     if (!title || !description || !picture) {
       alert("Title, Picture and description are required.");
@@ -20,7 +20,7 @@ export default function Page() {
     }
 
     try {
-      const res = await fetch("api/topics", {
+      const res = await fetch(`${apiUrl}/api/topics`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
