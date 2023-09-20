@@ -12,13 +12,14 @@ export default function Page() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     if (!title || !description || !picture) {
       alert("Title, Picture and description are required.");
       return;
     }
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
       const res = await fetch(`${apiUrl}/api/topics`, {
         method: "POST",
         headers: {
@@ -65,7 +66,8 @@ export default function Page() {
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="border border-gray-300 rounded-md w-full h-80"
+            className="border border-gray-300 rounded-md w-full h-80 p-3"
+            placeholder="Your adventures start here !"
           />
         </div>
 
