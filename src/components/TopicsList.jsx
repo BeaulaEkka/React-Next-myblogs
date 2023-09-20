@@ -18,7 +18,6 @@ const getTopics = async () => {
     console.log("Error loading topics: ", error);
     throw error;
   }
-  return;
 };
 
 export default async function TopicsList() {
