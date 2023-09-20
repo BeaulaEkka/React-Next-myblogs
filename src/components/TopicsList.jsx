@@ -3,8 +3,8 @@ import RemoveBtn from "./RemoveBtn";
 import Image from "next/image";
 
 const getTopics = async () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   try {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     const res = await fetch(`${apiUrl}/api/topics`, {
       cache: "no-store",
     });
