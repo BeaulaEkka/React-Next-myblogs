@@ -8,7 +8,6 @@ const getTopics = async () => {
     const res = await fetch(`${apiUrl}/api/topics`, {
       cache: "no-store",
     });
-    console.log("API Response:", res);
 
     if (!res.ok) {
       throw new Error("Failed to fetch topics");
@@ -18,11 +17,11 @@ const getTopics = async () => {
   } catch (error) {
     console.log("Error loading topics: ", error);
   }
+  return;
 };
 
-export default async function TopicsList(getTopics) {
-  const topics = await getTopics();
-  console.log("TOPICS:", topics);
+export default async function TopicsList() {
+  const { topics } = await getTopics();
 
   return (
     <div className="w-[80%] flex-col">
