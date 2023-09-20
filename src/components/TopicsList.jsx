@@ -3,11 +3,12 @@ import RemoveBtn from "./RemoveBtn";
 import Image from "next/image";
 
 const getTopics = async () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   try {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     const res = await fetch(`${apiUrl}/api/topics`, {
       cache: "no-store",
     });
+    console.log("API Response:", res);
 
     if (!res.ok) {
       throw new Error("Failed to fetch topics");
@@ -19,8 +20,9 @@ const getTopics = async () => {
   }
 };
 
-export default async function TopicsList() {
+export default async function TopicsList(getTopics) {
   const { topics } = await getTopics();
+  console.log("TOPICS:", topics);
 
   return (
     <div className="w-[80%] flex-col">
