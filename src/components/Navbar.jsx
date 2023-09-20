@@ -26,9 +26,9 @@ export default function Navbar() {
             {" "}
             <Link href="/travel">Travel Resources</Link>
           </li>
-          <Link href="/addTopic">
+          <Link href="/addstory">
             <li className="hover:bg-pink-400  h-[4rem] px-5 flex items-center">
-              Add Topic <addTopic />
+              Add Story
             </li>
           </Link>
         </ul>

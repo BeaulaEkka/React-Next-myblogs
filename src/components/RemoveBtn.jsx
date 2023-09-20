@@ -5,8 +5,9 @@ export default function RemoveBtn({ id }) {
   const router = useRouter();
 
   const removeTopic = async () => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     const confirmed = confirm("Are you sure?");
-    const apiUrl = process.env.API_URL;
 
     if (confirmed) {
       const res = await fetch(`${apiUrl}/api/topics?id=${id}`, {

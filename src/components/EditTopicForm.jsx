@@ -1,8 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import "react-quill/dist/quill.snow.css";
-import ReactQuill from "react-quill";
 
 export default function EditTopicForm({ title, description, picture, id }) {
   const router = useRouter();
@@ -10,14 +8,10 @@ export default function EditTopicForm({ title, description, picture, id }) {
   const [newDescription, setNewDescription] = useState(description);
   const [newPicture, setNewPicture] = useState(picture);
 
-  const handleQuillSubmit = (html) => {
-    setNewDescription(html);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const apiUrl = process.env.API_URL;
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
     try {
       const res = await fetch(`${apiUrl}/api/topics/${id}`, {
@@ -51,40 +45,17 @@ export default function EditTopicForm({ title, description, picture, id }) {
           placeholder="Topic Title"
           className="border border-slate-300 mt-5 p-4 w-full mx-auto flex flex-center"
         />
-        <div className="w-full h-96">
-          {" "}
-          <ReactQuill
-            theme="snow"
+
+        <div className="w-full">
+          <textarea
+            name="description"
+            id="description"
             value={newDescription}
-            onChange={handleQuillSubmit}
-            placeholder="Topic Description"
-            className="h-80"
-            modules={{
-              toolbar: {
-                container: [
-                  [{ header: "1" }, { header: "2" }, { font: [] }],
-                  ["bold", "italic", "underline", "strike", "blockquote"],
-                  [{ list: "ordered" }, { list: "bullet" }],
-                  ["link", "image", "video"],
-                  ["clean"],
-                ],
-              },
-            }}
-            formats={[
-              "header",
-              "font",
-              "bold",
-              "italic",
-              "underline",
-              "strike",
-              "blockquote",
-              "list",
-              "link",
-              "image",
-              "video",
-            ]}
+            onChange={(e) => setNewDescription(e.target.value)}
+            className="border border-gray-300 rounded-md w-full h-80"
           />
         </div>
+
         <input
           onChange={(e) => setNewPicture(e.target.value)}
           value={newPicture}

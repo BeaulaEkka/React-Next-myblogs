@@ -3,7 +3,7 @@ import RemoveBtn from "./RemoveBtn";
 import Image from "next/image";
 
 const getTopics = async () => {
-  const apiUrl = process.env.API_URL;
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   try {
     const res = await fetch(`${apiUrl}/api/topics`, {
       cache: "no-store",
@@ -36,7 +36,7 @@ export default async function TopicsList() {
                   src={t.picture}
                   width={600}
                   height={500}
-                  alt={t.id}
+                  alt={t.title}
                   style={{
                     WebkitMaskImage: "url(/images/paintbrush.png)",
                     maskImage: "url(/images/paintbrush.png)",

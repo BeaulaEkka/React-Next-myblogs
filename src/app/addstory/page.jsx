@@ -1,24 +1,33 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import "react-quill/dist/quill.snow.css";
-import ReactQuill from "react-quill";
+// import { Editor } from "react-draft-wysiwyg";
+// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+// import draftToHtml from "draftjs-to-html";
+// import htmlToDraft from "html-to-draftjs";
 
 export default function Page() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [picture, setPicture] = useState("");
-  const [isClient, setIsClient] = useState(false);
+  // const [isClient, setIsClient] = useState(false);
+
   const router = useRouter();
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+
+  // useEffect(() => {
+  //   setIsClient(true);
+  // }, []);
+
+  // const handleEditorshtml = (html) => {
+  //   setDescription(html);
+  // };
 
   const handleSubmit = async (e) => {
-    const apiUrl = process.env.API_URL;
     e.preventDefault();
 
-    if (!title || !description.trim() || !picture) {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+    if (!title || !description || !picture) {
       alert("Title and description are required.");
       return;
     }
@@ -29,7 +38,11 @@ export default function Page() {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ title, description, picture }),
+        body: JSON.stringify({
+          title,
+          description,
+          picture,
+        }),
       });
 
       if (res.ok) {
@@ -59,17 +72,27 @@ export default function Page() {
             placeholder="Topic Title"
           />
         </div>
-        <div className="h-80">
+        {/* <div>
           {isClient && (
-            <ReactQuill
-              theme="snow"
+            <Editor
               value={description}
-              onChange={setDescription}
-              placeholder="Topic Description"
-              className="h-80 "
+              onChange={handleEditorshtml}
+              toolbarClassName="toolbarClassName"
+              wrapperClassName="wrapperClassName"
+              editorClassName="editorClassName"
             />
           )}
+        </div> */}
+        <div className="w-full">
+          <textarea
+            name="description"
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="border border-gray-300 rounded-md w-full h-80"
+          />
         </div>
+
         <div className="mt-12">
           <input
             onChange={(e) => setPicture(e.target.value)}
