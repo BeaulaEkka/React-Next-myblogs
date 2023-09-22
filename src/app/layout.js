@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
-
+import "react-quill/dist/quill.snow.css";
 import { Inter, Freehand } from "next/font/google";
 import Footer from "@/components/Footer";
 

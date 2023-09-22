@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import ReactQuill, { Quill, Toolbar } from "react-quill";
 
 export default function Page() {
   const [title, setTitle] = useState("");
@@ -9,12 +10,26 @@ export default function Page() {
 
   const router = useRouter();
 
+  const modules = {
+    toolbar: [
+      [{ header: 1 }, { header: 2 }],
+      ["bold", "italic", "underline", "strike", "cursive"],
+      [{ color: [] }, { background: [] }],
+      [{ align: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
+      [{ script: "sub" }, { script: "super" }],
+      [{ indent: "-1" }, { indent: "+1" }],
+      ["clean"],
+    ],
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-    if (!title || !description || !picture) {
+    if (!title || !description) {
       alert("Title, Picture and description are required.");
       return;
     }
@@ -61,17 +76,22 @@ export default function Page() {
         </div>
 
         <div className="w-full">
-          <textarea
-            name="description"
-            id="description"
+          <ReactQuill
+            theme="snow"
+            modules={modules}
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="border border-gray-300 rounded-md w-full h-80 p-3"
-            placeholder="Your adventures start here !"
+            onChange={setDescription}
+            className="h-96"
           />
         </div>
 
         <div className="mt-12">
+          <div className="flex flex-row text-sm text-gray-400 mb-2">
+            <p className="select-none">Eg:</p>
+            <p>
+              https://images.pexels.com/photos/11387361/pexels-photo-11387361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2
+            </p>
+          </div>
           <input
             onChange={(e) => setPicture(e.target.value)}
             value={picture}

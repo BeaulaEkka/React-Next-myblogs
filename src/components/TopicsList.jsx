@@ -1,6 +1,8 @@
 import Link from "next/link";
 import RemoveBtn from "./RemoveBtn";
 import Image from "next/image";
+import styles from "../app/styles/topicslist.module.css";
+import moment from "moment";
 
 const getTopics = async () => {
   try {
@@ -49,13 +51,26 @@ export default async function TopicsList() {
                       maskSize: "cover",
                       maskPosition: "bottom",
                     }}
-                    className="w-full h-full object-cover object-bottom "
+                    className="w-full h-full object-cover object-bottom  bg-gray-300"
                   />
                   <h1 className="text-8xl text-white mb-5 font-freehand absolute right-14 top-24">
                     {t.title}
                   </h1>
+
                   <div className="w-full md:w-[90%] mx-auto">
-                    {t.description}
+                    <div className="text-gray-500 py-2 flex flex-rows ">
+                      <p className="capitalize">{t.title}&nbsp;&nbsp;</p>
+
+                      <p>
+                        {" "}
+                        {moment(t.createdAt).format(" DD MMM YYYY")}
+                        &nbsp;/&nbsp;Birdie&nbsp;-&nbsp;My Travel Blogspot
+                      </p>
+                    </div>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: t.description }}
+                      className={styles.topiclist}
+                    />
                   </div>
                 </div>
 

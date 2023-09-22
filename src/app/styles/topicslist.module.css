@@ -1,0 +1,23 @@
+.topiclist h1 {
+  font-size: clamp(1rem, 0.6rem + 2vw, 3rem);
+  font-weight: bold;
+}
+
+.topiclist h2 {
+  font-size: clamp(1rem, 0.8rem + 1vw, 2rem);
+  font-weight: bold;
+}
+
+.topiclist ol {
+  list-style-type: decimal;
+  margin-left: 20px;
+}
+
+.topiclist ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.topiclist li {
+  text-indent: 0.2rem;
+}

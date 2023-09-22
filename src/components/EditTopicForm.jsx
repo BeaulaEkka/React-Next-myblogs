@@ -1,12 +1,27 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import ReactQuill from "react-quill";
 
 export default function EditTopicForm({ title, description, picture, id }) {
   const router = useRouter();
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
   const [newPicture, setNewPicture] = useState(picture);
+
+  const modules = {
+    toolbar: [
+      [{ header: 1 }, { header: 2 }],
+      ["bold", "italic", "underline", "strike", "cursive"],
+      [{ color: [] }, { background: [] }],
+      [{ align: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
+      [{ script: "sub" }, { script: "super" }],
+      [{ indent: "-1" }, { indent: "+1" }],
+      ["clean"],
+    ],
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,12 +62,12 @@ export default function EditTopicForm({ title, description, picture, id }) {
         />
 
         <div className="w-full">
-          <textarea
-            name="description"
-            id="description"
+          <ReactQuill
+            theme="snow"
+            modules={modules}
             value={newDescription}
-            onChange={(e) => setNewDescription(e.target.value)}
-            className="border border-gray-300 rounded-md w-full h-80"
+            onChange={setNewDescription}
+            className="h-fit"
           />
         </div>
 
@@ -61,7 +76,7 @@ export default function EditTopicForm({ title, description, picture, id }) {
           value={newPicture}
           type="text"
           placeholder="Image Link"
-          className="w-full  border border-slate-300  p-4  mx-auto flex flex-center"
+          className="w-full  border border-slate-300  p-4  mx-auto flex flex-center "
         />
         <button className="font-bold bg-cyan-500 w-fit text-white px-6 py-3 rounded-md mt-5">
           Update Topic
