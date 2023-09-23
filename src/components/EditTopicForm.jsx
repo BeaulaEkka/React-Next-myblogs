@@ -1,11 +1,11 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-// import dynamic from "next/dynamic";
+import dynamic from "next/dynamic";
 
-// const QuillEditor = dynamic(() => import("react-quill"), {
-//   ssr: false, // Ensure it's not loaded during server-side rendering
-// });
+const QuillEditor = dynamic(() => import("react-quill"), {
+  ssr: false, // Ensure it's not loaded during server-side rendering
+});
 
 export default function EditTopicForm({ title, description, picture, id }) {
   const router = useRouter();
@@ -13,19 +13,19 @@ export default function EditTopicForm({ title, description, picture, id }) {
   const [newDescription, setNewDescription] = useState(description);
   const [newPicture, setNewPicture] = useState(picture);
 
-  // const modules = {
-  //   toolbar: [
-  //     [{ header: 1 }, { header: 2 }],
-  //     ["bold", "italic", "underline", "strike"],
-  //     [{ color: [] }, { background: [] }],
-  //     [{ align: [] }],
-  //     [{ list: "ordered" }, { list: "bullet" }],
-  //     ["link", "image"],
-  //     [{ script: "sub" }, { script: "super" }],
-  //     [{ indent: "-1" }, { indent: "+1" }],
-  //     ["clean"],
-  //   ],
-  // };
+  const modules = {
+    toolbar: [
+      [{ header: 1 }, { header: 2 }],
+      ["bold", "italic", "underline", "strike"],
+      [{ color: [] }, { background: [] }],
+      [{ align: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
+      [{ script: "sub" }, { script: "super" }],
+      [{ indent: "-1" }, { indent: "+1" }],
+      ["clean"],
+    ],
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,7 +65,7 @@ export default function EditTopicForm({ title, description, picture, id }) {
           className="border border-slate-300 mt-5 p-4 w-full mx-auto flex flex-center"
         />
 
-        {/* <div className="w-full">
+        <div className="w-full">
           <QuillEditor
             theme="snow"
             modules={modules}
@@ -73,7 +73,7 @@ export default function EditTopicForm({ title, description, picture, id }) {
             onChange={setNewDescription}
             className="h-fit"
           />
-        </div> */}
+        </div>
 
         <input
           onChange={(e) => setNewPicture(e.target.value)}

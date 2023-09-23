@@ -1,12 +1,12 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-// import { Quill, Toolbar } from "react-quill";
-// import dynamic from "next/dynamic";
+import { Quill, Toolbar } from "react-quill";
+import dynamic from "next/dynamic";
 
-// const QuillEditor = dynamic(() => import("react-quill"), {
-//   ssr: false,
-// });
+const QuillEditor = dynamic(() => import("react-quill"), {
+  ssr: false,
+});
 
 export default function Page() {
   const [title, setTitle] = useState("");
@@ -15,19 +15,19 @@ export default function Page() {
 
   const router = useRouter();
 
-  // const modules = {
-  //   toolbar: [
-  //     [{ header: 1 }, { header: 2 }],
-  //     ["bold", "italic", "underline", "strike"],
-  //     [{ color: [] }, { background: [] }],
-  //     [{ align: [] }],
-  //     [{ list: "ordered" }, { list: "bullet" }],
-  //     ["link", "image"],
-  //     [{ script: "sub" }, { script: "super" }],
-  //     [{ indent: "-1" }, { indent: "+1" }],
-  //     ["clean"],
-  //   ],
-  // };
+  const modules = {
+    toolbar: [
+      [{ header: 1 }, { header: 2 }],
+      ["bold", "italic", "underline", "strike"],
+      [{ color: [] }, { background: [] }],
+      [{ align: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
+      [{ script: "sub" }, { script: "super" }],
+      [{ indent: "-1" }, { indent: "+1" }],
+      ["clean"],
+    ],
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,7 +80,7 @@ export default function Page() {
           />
         </div>
 
-        {/* <div className="w-full">
+        <div className="w-full">
           <QuillEditor
             theme="snow"
             modules={modules}
@@ -88,7 +88,7 @@ export default function Page() {
             onChange={setDescription}
             className="h-96"
           />
-        </div> */}
+        </div>
 
         <div className="mt-12">
           <div className="flex flex-row text-sm text-gray-400 mb-2">
