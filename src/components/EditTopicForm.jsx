@@ -3,8 +3,9 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 
-const QuillEditor = dynamic(() => import("react-quill"), {
-  ssr: false, // Ensure it's not loaded during server-side rendering
+const QuillEditor = dynamic(import("react-quill"), {
+  ssr: false,
+  loading: () => <p>Loading ...</p>,
 });
 
 export default function EditTopicForm({ title, description, picture, id }) {

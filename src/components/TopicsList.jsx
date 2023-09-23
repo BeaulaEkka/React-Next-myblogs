@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import RemoveBtn from "./RemoveBtn";
 import Image from "next/image";
