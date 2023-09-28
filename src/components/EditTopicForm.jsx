@@ -3,10 +3,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 
-const QuillEditor = dynamic(import("react-quill"), {
-  ssr: false,
-  loading: () => <p>Loading ...</p>,
-});
+const QuillEditor =
+  typeof window === "object" ? require("react-quill") : () => false;
 
 export default function EditTopicForm({ title, description, picture, id }) {
   const router = useRouter();
@@ -53,7 +51,7 @@ export default function EditTopicForm({ title, description, picture, id }) {
   };
 
   return (
-    <div className="w-[80%] mx-auto ">
+    <div className="w-[80%] mx-auto mb-5">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-5 items-center justify-center w-1/2 mt-5 mx-auto"
