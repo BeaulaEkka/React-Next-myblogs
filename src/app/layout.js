@@ -19,15 +19,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <AuthProvider>
-        <body className={`font-${inter} ${freehand}`}>
+      <body className={`font-${inter} ${freehand}`}>
+        {" "}
+        <AuthProvider>
           <Navbar />
 
           <div className="min-h-screen flex grow">{children}</div>
 
           <Footer />
-        </body>{" "}
-      </AuthProvider>
+        </AuthProvider>
+      </body>{" "}
     </html>
   );
 }

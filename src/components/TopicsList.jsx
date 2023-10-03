@@ -25,7 +25,7 @@ const getTopics = async () => {
 };
 
 export default async function TopicsList() {
-  const session = await getServerSession();
+  const { data: session } = await getServerSession();
 
   try {
     const { topics } = await getTopics();
@@ -112,7 +112,7 @@ export default async function TopicsList() {
                 </div>
 
                 <div className="w-full flex flex-col gap-8 justify-center mt-5 mb-5 ">
-                  {process.env.NODE_ENV === "production" && !session ? (
+                  {/* {process.env.NODE_ENV === "production" && !session ? (
                     // Render something specific for production without a session
                     <div>Please log in to access this content.</div>
                   ) : (
@@ -132,9 +132,8 @@ export default async function TopicsList() {
                       )}
                       <ScrollToTop />
                     </div>
-                  )}
-
-                  {/* {session && (
+                  )} */}
+                  {session && (
                     <div className="flex flex-row gap-5 justify-center">
                       <RemoveBtn id={t._id} />
                       <Link href={`/editTopic/${t._id}`}>
@@ -143,7 +142,7 @@ export default async function TopicsList() {
                         </button>
                       </Link>
                     </div>
-                  )}{" "} */}
+                  )}{" "}
                   <ScrollToTop />
                 </div>
               </div>
