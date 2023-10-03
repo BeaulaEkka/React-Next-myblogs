@@ -8,18 +8,6 @@ const nextConfig = {
       "www.unsplash.com",
     ],
   },
-  // images: {
-  //   remotePatterns: [
-  //     {
-  //       protocol: "https",
-  //       hostname: "images.unsplash.com",
-  //     },
-  //     {
-  //       protocol: "https",
-  //       hostname: "images.pexels.com",
-  //     },
-  //   ],
-  // },
 };
 
 module.exports = nextConfig;
