@@ -5,6 +5,7 @@ import styles from "../app/styles/topicslist.module.css";
 import moment from "moment";
 import { getServerSession } from "next-auth";
 import ScrollToTop from "./ScrollToTop";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const getTopics = async () => {
   try {
@@ -25,7 +26,7 @@ const getTopics = async () => {
 };
 
 export default async function TopicsList() {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
   try {
     const { topics } = await getTopics();
