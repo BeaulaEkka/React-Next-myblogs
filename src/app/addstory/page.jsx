@@ -27,8 +27,8 @@ export default function Page() {
   };
 
   useEffect(() => {
-    if (!session && router.pathname !== "/api/auth/signin") {
-      router.push("/api/auth/signin");
+    if (!session) {
+      signIn();
     }
   }, [session, router]);
 
@@ -49,10 +49,10 @@ export default function Page() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (!session) {
-    //   router.push("/api/auth/signin");
-    //   return;
-    // }
+    if (!session) {
+      signIn();
+      return;
+    }
 
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
