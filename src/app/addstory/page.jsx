@@ -26,13 +26,7 @@ export default function Page() {
     ],
   };
 
-  // useEffect(() => {
-  //   if (!session) {
-  //     router.push("/api/auth/signin");
-  //   }
-  // }, [session, router]);
   useEffect(() => {
-    // Redirect to login page if not logged in and not already on the login page
     if (!session && router.pathname !== "/api/auth/signin") {
       router.push("/api/auth/signin");
     }

@@ -27,9 +27,8 @@ export default function EditTopicForm({ title, description, picture, id }) {
   const isValidURL = (url) => {
     try {
       const parsedUrl = new URL(url);
-      const allowedDomains = ["pexels.com", "unsplash.com"]; // Add more allowed domains as needed
+      const allowedDomains = ["pexels.com", "unsplash.com"];
 
-      // Check if the hostname is in the allowedDomains array or if it's pexels.com subdomain
       if (
         !allowedDomains.some((domain) => parsedUrl.hostname.endsWith(domain))
       ) {
