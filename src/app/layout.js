@@ -3,6 +3,8 @@ import "./globals.css";
 import "react-quill/dist/quill.snow.css";
 import { Inter, Freehand } from "next/font/google";
 import Footer from "@/components/Footer";
+import SessionProvider from "../components/SessionProvider";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +21,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`font-${inter} ${freehand}`}>
-        <Navbar />
-        <div className="min-h-screen flex grow">{children}</div>
-        <Footer />
+        <SessionProvider>
+          <Navbar />
+
+          <div className="min-h-screen flex grow">{children}</div>
+
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );

@@ -8,17 +8,21 @@ import {
   FaGithub,
   FaLinkedin,
 } from "react-icons/fa";
+import ScrollToTop from "./ScrollToTop";
 
 export default function Footer() {
   return (
-    <div className="bg-gray-900 w-full h-fit py-5 text-pink-200">
+    <div className=" bg-gray-900 w-full h-fit text-pink-200 py-10 -mt-5 ">
+      {/* <div className=""> */}
+      <ScrollToTop />
+      {/* </div> */}
       <div className="w-[60%] mx-auto flex flex-col md:flex-row justify-between p-5">
         <div className="flex flex-col justify-center items-center">
           <Image src="/images/logo.png" alt="logo" width={250} height={250} />
           <p className="text-cyan-300">
             © 2023 All Rights Reserved. Birdie. beaula.vercel.com
           </p>
-          <div className="flex flex-row gap-5 mt-5">
+          <div className="flex flex-row gap-5 mt-5 mb-5">
             <div className="text-pink-200  hover:text-pink-400 text-2xl">
               <Link href="https://www.linkedin.com/in/beaula-ekka-favejee-97316558/">
                 <FaLinkedin />
@@ -43,7 +47,7 @@ export default function Footer() {
         </div>
         <div>
           <h1 className="font-bold  text-pink-300">TOP PLACES</h1>{" "}
-          <div className="text-cyan-300">
+          <div className="text-cyan-300 mb-5">
             <p>Norway</p> <p>Iceland</p> <p>New York</p> <p>Spain</p>
           </div>
         </div>

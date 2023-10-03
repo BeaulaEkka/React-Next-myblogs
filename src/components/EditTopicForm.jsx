@@ -1,7 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import dynamic from "next/dynamic";
 
 const QuillEditor =
   typeof window === "object" ? require("react-quill") : () => false;
@@ -25,12 +24,32 @@ export default function EditTopicForm({ title, description, picture, id }) {
       ["clean"],
     ],
   };
+  const isValidURL = (url) => {
+    try {
+      const parsedUrl = new URL(url);
+      const allowedDomains = ["pexels.com", "unsplash.com"]; // Add more allowed domains as needed
+
+      // Check if the hostname is in the allowedDomains array or if it's pexels.com subdomain
+      if (
+        !allowedDomains.some((domain) => parsedUrl.hostname.endsWith(domain))
+      ) {
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
+    if (newPicture && !isValidURL(newPicture)) {
+      alert("Invalid Image URL. Please provide a valid URL or leave it blank.");
+      return;
+    }
     try {
       const res = await fetch(`${apiUrl}/api/topics/${id}`, {
         method: "PUT",
@@ -51,7 +70,7 @@ export default function EditTopicForm({ title, description, picture, id }) {
   };
 
   return (
-    <div className="w-[80%] mx-auto mb-5">
+    <div className=" w-[80%] mx-auto mb-5 mt-[8rem]">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-5 items-center justify-center w-1/2 mt-5 mx-auto"

@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Page() {
   return (
-    <div className="w-[80%] mx-auto min-h-screen mb-20">
+    <div className="-z-10 w-[80%] mx-auto min-h-screen mb-20 mt-[11rem]">
       <div className="w-full h-[30rem] p-3  ">
         <div className="relative h-full bg-no-repeat">
           <Image

@@ -25,6 +25,23 @@ export default function Page() {
     ],
   };
 
+  const isValidURL = (url) => {
+    try {
+      const parsedUrl = new URL(url);
+      const allowedDomains = ["pexels.com", "unsplash.com"]; // Add more allowed domains as needed
+
+      // Check if the hostname is in the allowedDomains array or if it's pexels.com subdomain
+      if (
+        !allowedDomains.some((domain) => parsedUrl.hostname.endsWith(domain))
+      ) {
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -35,6 +52,12 @@ export default function Page() {
       return;
     }
 
+    if (picture && !isValidURL(picture)) {
+      alert("Invalid Image URL. Please provide a valid URL or leave it blank.");
+      return;
+    }
+    const pictureToSave = isValidURL(picture) ? picture : "";
+
     try {
       const res = await fetch(`${apiUrl}/api/topics`, {
         method: "POST",
@@ -44,7 +67,7 @@ export default function Page() {
         body: JSON.stringify({
           title,
           description,
-          picture,
+          picture: pictureToSave,
         }),
       });
 
@@ -61,10 +84,10 @@ export default function Page() {
   };
 
   return (
-    <div className="w-[80%] mx-auto flex flex-col gap-3 mt-[8rem] mb-[8rem]">
+    <div className="bg-white z-0 w-[90%] md:w-[80%] mx-auto flex flex-col gap-3 mt-[8rem] mb-[8rem]">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-3 w-[60%] mx-auto"
+        className="flex flex-col gap-3 md:w-[60%] mx-auto"
       >
         <div>
           <input
@@ -82,13 +105,13 @@ export default function Page() {
             modules={modules}
             value={description}
             onChange={setDescription}
-            className="h-96"
+            className="h-96 mb-4 md:mb-2"
           />
         </div>
 
         <div className="mt-12">
-          <div className="flex flex-row text-sm text-gray-400 mb-2">
-            <p className="select-none">Eg:</p>
+          <div className="flex flex-row text-sm text-gray-400 mb-4 md:mb-2">
+            <p className="select-none">Eg: </p>
             <p>
               https://images.pexels.com/photos/11387361/pexels-photo-11387361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2
             </p>
@@ -98,7 +121,7 @@ export default function Page() {
             value={picture}
             className="border border-gray-300 px-8 py-2  w-full "
             type="text"
-            placeholder="Image Url"
+            placeholder="Image Url (Optional) "
           />
         </div>
 
