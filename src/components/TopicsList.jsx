@@ -26,6 +26,8 @@ const getTopics = async () => {
 
 export default async function TopicsList() {
   const session = await getServerSession();
+  console.log("Session Object:", session);
+
   try {
     const { topics } = await getTopics();
 

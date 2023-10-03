@@ -26,11 +26,14 @@ export default function Page() {
     ],
   };
 
-  useEffect(() => {
-    if (!session && router.pathname !== "/api/auth/signin") {
-      router.push("/api/auth/signin");
-    }
-  }, [session, router]);
+  // useEffect(() => {
+  //   if (!session && router.pathname !== "/api/auth/signin") {
+  //     router.push("/api/auth/signin");
+  //   }
+  // }, [session, router]);
+  if (!session) {
+    router.push("/signin");
+  }
 
   const isValidURL = (url) => {
     try {
@@ -49,10 +52,10 @@ export default function Page() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!session) {
-      router.push("/api/auth/signin");
-      return;
-    }
+    // if (!session) {
+    //   router.push("/api/auth/signin");
+    //   return;
+    // }
 
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
