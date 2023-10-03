@@ -1,15 +1,15 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { HiMenu } from "react-icons/hi";
 import { MobileNav } from "./MobileNav";
 import { useRouter } from "next/navigation";
 
 export default function Navbar() {
-  const { session } = useSession();
-  console.log(session);
+  const { data: session } = useSession();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
 
@@ -24,10 +24,6 @@ export default function Navbar() {
   const handleMobileMenuClick = () => {
     setMenuOpen(!menuOpen);
   };
-
-  useEffect(() => {
-    setActiveLink(router.pathname);
-  }, [router.pathname]);
 
   return (
     <div className="fixed  w-full bg-cyan-500  h-[4rem] shadow-md ">
@@ -77,9 +73,7 @@ export default function Navbar() {
           </li>
           <Link href="/addstory" onClick={() => setActiveLink("/addstory")}>
             <li
-              onClick={() => {
-                handleAddStoryClick;
-              }}
+              onClick={handleAddStoryClick}
               className={`${
                 activeLink === "/addstory" ? "bg-pink-600" : ""
               } hidden md:flex hover:bg-pink-400 h-[4rem] justify-center  px-5  items-center`}
