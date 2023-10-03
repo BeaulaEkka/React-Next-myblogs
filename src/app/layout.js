@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`font-${inter} ${freehand}`}>
-        <SessionProvider>
+        <SessionProvider basePath="/api/auth">
           <Navbar />
 
           <div className="min-h-screen flex grow">{children}</div>
