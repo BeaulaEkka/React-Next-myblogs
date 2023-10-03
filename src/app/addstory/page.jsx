@@ -31,8 +31,9 @@ export default function Page() {
   //     router.push("/api/auth/signin");
   //   }
   // }, [session, router]);
+
   if (!session) {
-    router.push("/signin");
+    router.push("/api/auth/signin");
   }
 
   const isValidURL = (url) => {
