@@ -8,7 +8,8 @@ import { MobileNav } from "./MobileNav";
 import { useRouter } from "next/navigation";
 
 export default function Navbar() {
-  const { data: session } = useSession();
+  const { session } = useSession();
+  console.log(session);
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
 
