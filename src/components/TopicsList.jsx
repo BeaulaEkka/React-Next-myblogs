@@ -25,7 +25,7 @@ const getTopics = async () => {
 };
 
 export default async function TopicsList() {
-  const { data: session } = await getServerSession();
+  const session = await getServerSession();
 
   try {
     const { topics } = await getTopics();
