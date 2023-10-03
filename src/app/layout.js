@@ -19,7 +19,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <AuthProvider session={session}>
+      <AuthProvider>
         <body className={`font-${inter} ${freehand}`}>
           <Navbar />
 
