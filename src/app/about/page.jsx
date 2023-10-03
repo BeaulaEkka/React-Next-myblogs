@@ -21,7 +21,6 @@ export default function Page() {
               WebkitMaskSize: "cover",
               maskSize: "cover",
               maskPosition: "top",
-              objectFit: "cover",
             }}
           />
         </div>

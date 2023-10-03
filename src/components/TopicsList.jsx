@@ -113,27 +113,6 @@ export default async function TopicsList() {
                 </div>
 
                 <div className="w-full flex flex-col gap-8 justify-center mt-5 mb-5 ">
-                  {/* {process.env.NODE_ENV === "production" && !session ? (
-                    // Render something specific for production without a session
-                    <div>Please log in to access this content.</div>
-                  ) : (
-                    // Render your existing components
-                    <div>
-                      {" "}
-                      {console.log("Session:", session)}
-                      {session && (
-                        <div className="flex flex-row gap-5 justify-center">
-                          <RemoveBtn id={t._id} />
-                          <Link href={`/editTopic/${t._id}`}>
-                            <button className="px-8 py-2 bg-green-500 hover:bg-green-700 rounded text-white font-bold">
-                              Edit
-                            </button>
-                          </Link>
-                        </div>
-                      )}
-                      <ScrollToTop />
-                    </div>
-                  )} */}
                   {session && (
                     <div className="flex flex-row gap-5 justify-center">
                       <RemoveBtn id={t._id} />
