@@ -35,7 +35,12 @@ export default function Navbar() {
         <div className="">
           {" "}
           <Link href="/">
-            <Image src="/images/logo.png" alt="logo" width={120} height={120} />
+            <Image
+              src="/images/logo.png"
+              alt="logo"
+              width={163}
+              height={27.5}
+            />
           </Link>
         </div>
         <ul className="w-full mx-auto flex flex-row  font-semibold text-white items-center justify-end">

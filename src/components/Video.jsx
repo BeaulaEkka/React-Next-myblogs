@@ -2,7 +2,6 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { RxDoubleArrowDown } from "react-icons/rx";
 
 export const Video = () => {
@@ -17,7 +16,7 @@ export const Video = () => {
       >
         <source src={videoSource} type="video/mp4" />
       </video>
-      {/* <div className="flex justify-center items-center"> */}
+
       <motion.div
         initial="hidden"
         animate="visible"

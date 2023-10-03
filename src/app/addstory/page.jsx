@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 const QuillEditor =
   typeof window === "object" ? require("react-quill") : () => false;
 
@@ -8,7 +9,7 @@ export default function Page() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [picture, setPicture] = useState("");
-
+  const { data: session } = useSession();
   const router = useRouter();
 
   const modules = {
@@ -25,12 +26,22 @@ export default function Page() {
     ],
   };
 
+  // useEffect(() => {
+  //   if (!session) {
+  //     router.push("/api/auth/signin");
+  //   }
+  // }, [session, router]);
+  useEffect(() => {
+    // Redirect to login page if not logged in and not already on the login page
+    if (!session && router.pathname !== "/api/auth/signin") {
+      router.push("/api/auth/signin");
+    }
+  }, [session, router]);
+
   const isValidURL = (url) => {
     try {
       const parsedUrl = new URL(url);
-      const allowedDomains = ["pexels.com", "unsplash.com"]; // Add more allowed domains as needed
-
-      // Check if the hostname is in the allowedDomains array or if it's pexels.com subdomain
+      const allowedDomains = ["pexels.com", "unsplash.com"];
       if (
         !allowedDomains.some((domain) => parsedUrl.hostname.endsWith(domain))
       ) {
@@ -44,6 +55,10 @@ export default function Page() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!session) {
+      router.push("/api/auth/signin");
+      return;
+    }
 
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 

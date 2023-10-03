@@ -26,7 +26,6 @@ export const authOptions = {
           return Promise.resolve(null);
         }
 
-        // If conditions are met, return the user object
         const user = { id: "admin", name: "admin", email: "admin@admin.com" };
         return Promise.resolve(user);
       },
@@ -36,6 +35,7 @@ export const authOptions = {
     //   clientSecret: process.env.GITHUB_SECRET ?? "",
     // }),
   ],
+
   session: { strategy: "jwt" },
   secret: process.env.SECRET,
 };
