@@ -26,11 +26,11 @@ export default function Page() {
     ],
   };
 
-  useEffect(() => {
-    if (!session) {
-      signIn();
-    }
-  }, [session, router]);
+  // useEffect(() => {
+  //   if (!session) {
+  //     signIn();
+  //   }
+  // }, [session, router]);
 
   const isValidURL = (url) => {
     try {
@@ -49,10 +49,10 @@ export default function Page() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!session) {
-      signIn();
-      return;
-    }
+    // if (!session) {
+    //   signIn();
+    //   return;
+    // }
 
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
