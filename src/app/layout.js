@@ -3,7 +3,7 @@ import "./globals.css";
 import "react-quill/dist/quill.snow.css";
 import { Inter, Freehand } from "next/font/google";
 import Footer from "@/components/Footer";
-import SessionProvider from "../components/SessionProvider";
+import AuthProvider from "../components/SessionProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,15 +19,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`font-${inter} ${freehand}`}>
-        <SessionProvider session={session}>
+      <AuthProvider session={session}>
+        <body className={`font-${inter} ${freehand}`}>
           <Navbar />
 
           <div className="min-h-screen flex grow">{children}</div>
 
           <Footer />
-        </SessionProvider>
-      </body>
+        </body>{" "}
+      </AuthProvider>
     </html>
   );
 }
