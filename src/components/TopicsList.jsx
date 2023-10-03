@@ -26,7 +26,6 @@ const getTopics = async () => {
 
 export default async function TopicsList() {
   const session = await getServerSession();
-  console.log("Session Object:", session);
 
   try {
     const { topics } = await getTopics();
@@ -47,17 +46,9 @@ export default async function TopicsList() {
           memory. At Birdie-My Travel Blog, I don&apos;t just write travel
           blogs; I craft gateways to inspiration, offering a kaleidoscope of
           narratives that beckon you to explore, learn, and immerse yourself in
-          the beauty of the world. Inspiration at Every Turn My travel blogs are
-          more than just accounts of places; they&apos;re a symphony of
-          inspiration. Whether you&apos;re a seasoned traveler seeking your next
-          escapade or someone contemplating their maiden voyage, my stories
-          resonate with the wanderlust within you. Picture azure waters, ancient
-          alleyways, bustling markets, and serene landscapes – my words paint
-          vivid pictures, inviting you to dream and plan your next great
-          adventure. Local Flavor Unveiled I don&apos;t just scratch the
-          surface; I delve deep into the heart of each destination. My travel
-          blogs are your personal tour guides, introducing you to the soul of a
-          place through the eyes of a traveler.
+          the beauty of the world. Whether you&apos;re a seasoned traveler
+          seeking your next escapade or someone contemplating their maiden
+          voyage, my stories resonate with the wanderlust within you.
         </p>{" "}
         <p
           className="mt-5  first-letter:text-5xl first-letter:font-bold first-letter:text-slate-900
@@ -68,15 +59,11 @@ export default async function TopicsList() {
           insights. From the must-try local delicacies to off-the-beaten-path
           adventures, my blogs provide a roadmap for your exploration. Discover
           the dos and don&apos;ts, the hidden trails, and the secrets that turn
-          a good trip into an unforgettable one. Connect with me on the Road
-          Less Traveled Join me on this odyssey of discovery. Let my travel
-          blogs at Birdie-My Travel Blog be your compass, guiding you through
-          the diverse landscapes, rich cultures, and untold stories that the
-          world has to offer. Whether you&apos;re seeking adrenaline-pumping
-          adventures or tranquil retreats, I&apos;ve got you covered. So, fasten
-          your seatbelt and get ready for a journey where each blog at Birdie-My
-          Travel Blog is a passport to a new adventure. Let the wanderlust
-          begin!
+          a good trip into an unforgettable one. Whether you&apos;re seeking
+          adrenaline-pumping adventures or tranquil retreats, I&apos;ve got you
+          covered. So, fasten your seatbelt and get ready for a journey where
+          each blog at Birdie-My Travel Blog is a passport to a new adventure.
+          Let the wanderlust begin!
         </p>
         <div className="flex flex-col-reverse">
           {topics &&
@@ -125,7 +112,27 @@ export default async function TopicsList() {
                 </div>
 
                 <div className="w-full flex flex-col gap-8 justify-center mt-5 mb-5 ">
-                  {session && (
+                  {process.env.NODE_ENV === "production" && !session ? (
+                    // Render something specific for production without a session
+                    <div>Please log in to access this content.</div>
+                  ) : (
+                    // Render your existing components
+                    <div>
+                      {session && (
+                        <div className="flex flex-row gap-5 justify-center">
+                          <RemoveBtn id={t._id} />
+                          <Link href={`/editTopic/${t._id}`}>
+                            <button className="px-8 py-2 bg-green-500 hover:bg-green-700 rounded text-white font-bold">
+                              Edit
+                            </button>
+                          </Link>
+                        </div>
+                      )}
+                      <ScrollToTop />
+                    </div>
+                  )}
+
+                  {/* {session && (
                     <div className="flex flex-row gap-5 justify-center">
                       <RemoveBtn id={t._id} />
                       <Link href={`/editTopic/${t._id}`}>
@@ -134,7 +141,7 @@ export default async function TopicsList() {
                         </button>
                       </Link>
                     </div>
-                  )}{" "}
+                  )}{" "} */}
                   <ScrollToTop />
                 </div>
               </div>
