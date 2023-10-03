@@ -26,15 +26,11 @@ export default function Page() {
     ],
   };
 
-  // useEffect(() => {
-  //   if (!session && router.pathname !== "/api/auth/signin") {
-  //     router.push("/api/auth/signin");
-  //   }
-  // }, [session, router]);
-
-  if (!session) {
-    router.push("/api/auth/signin");
-  }
+  useEffect(() => {
+    if (!session && router.pathname !== "/api/auth/signin") {
+      router.push("/api/auth/signin");
+    }
+  }, [session, router]);
 
   const isValidURL = (url) => {
     try {
