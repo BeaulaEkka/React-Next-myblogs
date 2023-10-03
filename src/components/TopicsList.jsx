@@ -118,6 +118,8 @@ export default async function TopicsList() {
                   ) : (
                     // Render your existing components
                     <div>
+                      {" "}
+                      {console.log("Session:", session)}
                       {session && (
                         <div className="flex flex-row gap-5 justify-center">
                           <RemoveBtn id={t._id} />
