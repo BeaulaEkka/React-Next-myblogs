@@ -34,12 +34,12 @@ Express your travel tales with freedom using React Quill's rich text editor, all
 
 ### Frontend:
 
-        - ⚛️ React: Leveraged React to build the user interface for Birdie, ensuring a responsive and interactive experience.
-        - 🌐 react-router-dom: A library for routing and navigation in React applications.
-        - 📑 React Quill: Integrated the rich text editor to empower users to format their travel stories with ease.
-        - 🔑 NextAuth.js: Implemented NextAuth.js for user authentication, allowing users to create accounts and manage their profiles securely.
-        - ⚖️ HTML5 & CSS3: Used modern web technologies for structuring and styling the content, providing a visually appealing layout.
-        - 🔨 CRUD Functionality: Integrated CRUD operations on the frontend to enable users to create, read, update, and delete their travel stories.
+    - ⚛️ React: Leveraged React to build the user interface for Birdie, ensuring a responsive and interactive experience.
+    - 🌐 react-router-dom: A library for routing and navigation in React applications.
+    - 📑 React Quill: Integrated the rich text editor to empower users to format their travel stories with ease.
+    - 🔑 NextAuth.js: Implemented NextAuth.js for user authentication, allowing users to create accounts and manage their profiles securely.
+    - ⚖️ HTML5 & CSS3: Used modern web technologies for structuring and styling the content, providing a visually appealing layout.
+    - 🔨 CRUD Functionality: Integrated CRUD operations on the frontend to enable users to create, read, update, and delete their travel stories.
 
 ### Backend:
 
@@ -83,14 +83,14 @@ On the backend, I delved into user authentication using NextAuth.js, implementin
 
 Birdie - My Travel Blog is an ongoing project, and I have plans for further enhancements:
 
-    Version History:
-        Consider implementing version history for travel stories, allowing users to track and revert to previous versions of their content.
+Version History:
+Consider implementing version history for travel stories, allowing users to track and revert to previous versions of their content.
 
-    Collaborative Editing:
-        Explore collaborative editing features, enabling multiple users to contribute to and edit a travel story.
+Collaborative Editing:
+Explore collaborative editing features, enabling multiple users to contribute to and edit a travel story.
 
-    Advanced Filtering:
-        Implement advanced filtering options to help users discover and explore travel stories based on various criteria.
+Advanced Filtering:
+Implement advanced filtering options to help users discover and explore travel stories based on various criteria.
 
 I'm excited about the comprehensive content management capabilities that CRUD functionality brings to Birdie - My Travel Blog! 🌍🦜✈️
 
