@@ -1,3 +1,23 @@
+# Birdy-My Travel Blog [https://birdie-mytravelblog.vercel.app/](https://birdie-mytravelblog.vercel.app/)
+
+🌍 Exciting News! Introducing 'Birdie - My Travel Blog' 🦜✈️ I'm thrilled to share my latest project, a dynamic travel blog where you have the power to add, delete, and edit your travel stories seamlessly. 🚀 The website, fully backed by MongoDB, ensures a robust and efficient data management system.
+
+Express your travel tales with freedom using React Quill's rich text editor, allowing you to format your posts just the way you envision them! 📝✨ Whether you're a seasoned explorer or dreaming of your next adventure, Birdie is the perfect platform to share your journey.
+
+# Table of contents
+
+- [Overview](#overview)
+- [Screenshots](#screenshot)
+- [Live site](#live-site)
+- [My Process](#my-process)
+- [What I Learnt](#what-i-learned)
+- [Continued Development](#continued-development)
+- [Author](#author)
+
+## Screenshot
+
+![landingpage](./public/images/birdie_5.jpg)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
