@@ -10,7 +10,6 @@ Express your travel tales with freedom using React Quill's rich text editor, all
 
 - [Overview](#overview)
 - [Screenshots](#screenshot)
-- [Live site](#live-site)
 - [My Process](#my-process)
 - [What I Learnt](#what-i-learned)
 - [Continued Development](#continued-development)
