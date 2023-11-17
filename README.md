@@ -34,12 +34,12 @@ Express your travel tales with freedom using React Quill's rich text editor, all
 
 ### Frontend:
 
-    - ⚛️ React: Leveraged React to build the user interface for Birdie, ensuring a responsive and interactive experience.
-    - 🌐 react-router-dom: A library for routing and navigation in React applications.
-    - 📑 React Quill: Integrated the rich text editor to empower users to format their travel stories with ease.
-    - 🔑 NextAuth.js: Implemented NextAuth.js for user authentication, allowing users to create accounts and manage their profiles securely.
-    - ⚖️ HTML5 & CSS3: Used modern web technologies for structuring and styling the content, providing a visually appealing layout.
-    - 🔨 CRUD Functionality: Integrated CRUD operations on the frontend to enable users to create, read, update, and delete their travel stories.
+- ⚛️ React: Leveraged React to build the user interface for Birdie, ensuring a responsive and interactive experience.
+- 🌐 react-router-dom: A library for routing and navigation in React applications.
+- 📑 React Quill: Integrated the rich text editor to empower users to format their travel stories with ease.
+- 🔑 NextAuth.js: Implemented NextAuth.js for user authentication, allowing users to create accounts and manage their profiles securely.
+- ⚖️ HTML5 & CSS3: Used modern web technologies for structuring and styling the content, providing a visually appealing layout.
+- 🔨 CRUD Functionality: Integrated CRUD operations on the frontend to enable users to create, read, update, and delete their travel stories.
 
 ### Backend:
 
